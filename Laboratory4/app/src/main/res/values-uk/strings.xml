@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My application</string>
+
+    <string-array name="importance">
+        <item>Низька</item>
+        <item>Середня</item>
+        <item>Висока</item>
+    </string-array>
+
+    <string name="select_priority">Обрати важливість</string>
+    <string name="low_priority">Низька</string>
+    <string name="medium_priority">Середня</string>
+    <string name="high_priority">Висока</string>
+
+    <string name="new_note_creation">Створення</string>
+    <string name="title_field">Назва</string>
+    <string name="new_note_create_btn">Створити нову нотатку</string>
+
+        <string name="context_menu_edit">Редагувати</string>
+    <string name="context_menu_delete">Видалити</string>
+</resources>

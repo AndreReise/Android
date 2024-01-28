@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My application</string>
+
+    <string-array name="languages">
+        <item>English</item>
+        <item>Українська</item>
+    </string-array>
+
+    <string-array name="importance">
+        <item>Low</item>
+        <item>Normal</item>
+        <item>High</item>
+    </string-array>
+
+    <string name="select_priority">Select priority</string>
+    <string name="low_priority">Low</string>
+    <string name="medium_priority">Medium</string>
+    <string name="high_priority">High</string>
+
+    <string name="new_note_creation">Creation</string>
+    <string name="title_field">Title</string>
+    <string name="new_note_create_btn">Create a new note</string>
+
+    <string name="context_menu_edit">Edit</string>
+    <string name="context_menu_delete">Delete</string>
+</resources>
