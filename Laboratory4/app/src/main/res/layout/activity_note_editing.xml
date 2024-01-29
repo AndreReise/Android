@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#35333A">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/localization"
         style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:id="@+id/localization"
         android:layout_width="159dp"
         android:layout_height="49dp"
         android:layout_marginStart="120dp"
@@ -25,7 +24,6 @@
             android:id="@+id/importance_selector"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#B6B6B6"
             android:gravity="center"
             android:inputType="none"
             android:paddingStart="0dp"
@@ -36,6 +34,7 @@
             android:paddingBottom="0dp"
             android:textAlignment="center"
             android:text="@string/select_priority"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -43,9 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:shadowColor="#000000"
         android:text="@string/title_field"
-        android:textColor="#DADADA"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +55,6 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="15dp"
-        android:background="#3E3C43"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +72,6 @@
         android:inputType="text"
         android:text="@string/title_field"
         android:textAlignment="center"
-        android:textColor="#F4F4F4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
@@ -91,7 +86,6 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:textColor="#F1F1F1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_edit" />
@@ -103,7 +97,6 @@
         android:layout_marginStart="160dp"
         android:layout_marginEnd="161dp"
         android:layout_marginBottom="64dp"
-        android:backgroundTint="#B6B6B6"
         android:text="@string/new_note_create_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

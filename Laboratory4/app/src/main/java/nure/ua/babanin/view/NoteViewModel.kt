@@ -1,5 +1,6 @@
 package nure.ua.babanin.view
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +10,7 @@ import nure.ua.babanin.NotesRepository
 import java.time.Instant
 import java.time.LocalDateTime
 
-class NoteViewModel : ViewModel() {
+class NoteViewModel(val context: Context) : ViewModel() {
 
     private val _notes = MutableLiveData<List<Note>>()
 
@@ -17,7 +18,7 @@ class NoteViewModel : ViewModel() {
 
     fun loadData() {
 
-        val data = NotesRepository.getAllNotes()
+        val data = NotesRepository(context).getAllNotes()
         _notes.value = data
     }
 }

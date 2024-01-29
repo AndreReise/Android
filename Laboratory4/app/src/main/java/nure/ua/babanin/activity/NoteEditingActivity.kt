@@ -34,10 +34,14 @@ class NoteEditingActivity : AppCompatActivity() {
 
     private var noteToEdit: Note? = null
 
+    lateinit var repository: NotesRepository
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_editing)
+
+        repository = NotesRepository(this.applicationContext)
 
         imageView = findViewById(R.id.image)
         imageView.setOnClickListener{
@@ -85,7 +89,7 @@ class NoteEditingActivity : AppCompatActivity() {
                     imageUri = selectedImageUri
                 )
 
-                NotesRepository.addNote(newNote)
+                repository.addNote(newNote)
             }
             else
             {
@@ -94,7 +98,7 @@ class NoteEditingActivity : AppCompatActivity() {
                 noteToEdit!!.title = titleEditText.text.toString()
                 noteToEdit!!.imageUri = selectedImageUri
 
-                NotesRepository.updateNote(noteToEdit!!)
+                repository.updateNote(noteToEdit!!)
             }
 
             setResult(Activity.RESULT_OK)

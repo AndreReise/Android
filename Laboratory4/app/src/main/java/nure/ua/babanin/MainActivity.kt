@@ -1,16 +1,15 @@
 package nure.ua.babanin
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import nure.ua.babanin.activity.NoteEditingActivity
@@ -21,9 +20,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var noteViewModel: NoteViewModel
 
+    lateinit var repository: NotesRepository
+
+    private var isDarkThemeEnabled = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        repository = NotesRepository(this.applicationContext)
+
+        val themeFragment = ThemeSwitchFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.change_theme_container, themeFragment)
+            .commit()
 
         val createButton: Button = findViewById(R.id.create_note_btn)
             createButton.setOnClickListener { _ ->
@@ -41,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         languageSpinner.onItemSelectedListener = LanguageSpinnerSelectionListener(this)
 
-        noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
+        noteViewModel = NoteViewModel(this)
 
         noteViewModel.notes.observe(this, Observer { notes ->
             val recyclerView: RecyclerView = findViewById(R.id.notes_list_view)
@@ -66,14 +76,19 @@ class MainActivity : AppCompatActivity() {
             1 -> {
 
                 val editingIntent = Intent(this, NoteEditingActivity::class.java)
-                editingIntent.putExtra("NOTE", NotesRepository.getById(noteId))
+                editingIntent.putExtra("NOTE", repository.getById(noteId))
 
-                startActivity(editingIntent)
+                try {
+                    startActivity(editingIntent)
+                }
+                catch (exception: Exception){
+                    Log.d("lifecycle", exception.message!!)
+                }
 
                 return true
             }
             2 -> {
-                NotesRepository.removeNote(noteId)
+                repository.removeNote(noteId)
 
                 // Trigger refresh
                 noteViewModel.loadData()
